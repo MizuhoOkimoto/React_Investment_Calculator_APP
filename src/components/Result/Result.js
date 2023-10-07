@@ -25,6 +25,7 @@ function Result(props) {
           interest={data.interest}
           duration={data.duration}
           year={data.year}
+          initialSaving={data.initialSaving}
         />
       ))}
     </table>

@@ -19,18 +19,22 @@ function InputForm(props) {
       yearlySaving: +enteredYearlySaving,
       interest: +enteredInterest / 100,
       duration: +enteredDuration,
+      initialSaving: +enteredCurrentSaving,
     };
 
     for (let i = 0; i < userInput.duration; i++) {
       const yearlyInterest = userInput.currentSaving * userInput.interest;
-      userInput.currentSaving += yearlyInterest + userInput.yearlySaving;
+      const saving =
+        userInput.currentSaving + yearlyInterest + userInput.yearlySaving;
 
       yearlyData.push({
         year: i + 1,
         yearlyInterest: yearlyInterest,
-        currentSaving: userInput.currentSaving,
+        currentSaving: saving,
         yearlySaving: userInput.yearlySaving,
         interest: userInput.interest,
+        duration: userInput.duration,
+        initialSaving: userInput.currentSaving,
       });
       props.onSaveInvestmentData(yearlyData);
     }
